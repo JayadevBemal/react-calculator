@@ -1,13 +1,22 @@
 # React Calculator
 
-A simple calculator built using React.
+A simple calculator built using React with modern UI and basic arithmetic operations.
+
+## Live Demo
+
+🔗 [Open Calculator](https://react-calculator-sooty-delta.vercel.app)
 
 ## Preview
-
-![Calculator UI](image.png)
+![Calculator Preview](preview.png)
 
 ## Features
-- Basic arithmetic operations
-- Error handling
-- Backspace functionality
-- Responsive layout
+- Addition, subtraction, multiplication, division
+- Backspace and clear functionality
+- Error handling for invalid expressions
+- Responsive UI
+
+## Tech Stack
+- React
+- JavaScript
+- CSS Modules
+- Bootstrap
