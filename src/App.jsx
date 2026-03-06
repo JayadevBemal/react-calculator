@@ -30,20 +30,19 @@ function App() {
   let [data, setdata] = useState("");
   let buttonClick = (item) => {
     let value = item.target.innerText;
-    
-      if (value === "=") {
-        if (!data) return;
 
-        try {
-          let result = eval(data);
-          setdata(result.toString());
-        } catch {
-          setdata("error");
-        }
-      
+    if (value === "=") {
+      if (!data) return;
+
+      try {
+        let result = eval(data);
+        setdata(result.toString());
+      } catch {
+        setdata("error");
+      }
     } else if (value === "C") {
       setdata("");
-    } else if ( value === "⌫") {
+    } else if (value === "⌫") {
       setdata((prev) => prev.toString().slice(0, -1));
     } else {
       if (data === "error") {
@@ -55,6 +54,9 @@ function App() {
   };
   return (
     <>
+      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
+        React Calculator
+      </h1>
       <div className={styles.calcContainer}>
         <Display data={data}></Display>
         <Container
@@ -63,6 +65,9 @@ function App() {
           click={buttonClick}
         ></Container>
       </div>
+      <p style={{ textAlign: "center", marginTop: "20px", fontSize: "14px" }}>
+        Built with React by Jayadev Bemal
+      </p>
     </>
   );
 }
