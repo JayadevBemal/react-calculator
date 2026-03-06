@@ -1,0 +1,33 @@
+/* .btn{
+  border: 1px solid #8d9cb340;
+  margin: 5px;
+  height: 60px;
+  width: 60px;
+
+} */
+.btn{
+  height: 45px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.zero{
+  grid-column: span 2;
+}
+.operator{
+  background-color: #ff9500 !important;
+  color:white !important;
+}
+.equals{
+   background-color:#2ecc71 !important;
+  color:white;
+}
+
+.utility{
+  background-color:#d9534f !important;
+  color:white;
+}
+
+.btn:hover{
+  transform: scale(1.05);
+  transition: 0.1s;
+}
