@@ -1,19 +1,13 @@
 # React Calculator
 
-A simple calculator built using React with modern UI and error handling.
+A simple calculator built using React.
+
+## Preview
+
+![Calculator UI](image.png)
 
 ## Features
 - Basic arithmetic operations
-- Backspace and clear functionality
-- Responsive grid layout
-- Error handling for invalid expressions
-
-## Tech Stack
-- React
-- JavaScript
-- CSS Modules
-- Bootstrap
-
-## Run Locally
-npm install
-npm run dev
+- Error handling
+- Backspace functionality
+- Responsive layout
