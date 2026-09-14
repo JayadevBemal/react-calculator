@@ -1,10 +1,8 @@
-import "./App.css";
-import Container from "./ButtonContainer";
+import React, { useState } from "react";
+import ButtonContainersec from "./ButtonContainer";
 import Display from "./Display";
-import styles from "./App.module.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useState } from "react";
-function App() {
+
+export default function Calculator() {
   let buttonArray = [
     "C",
     "⌫",
@@ -28,48 +26,66 @@ function App() {
   ];
 
   let [data, setdata] = useState("");
+  let [equation,setEquation] = useState("");
+
+
   let buttonClick = (item) => {
     let value = item.target.innerText;
 
     if (value === "=") {
-      if (!data) return;
+      if (!equation) return;
 
       try {
-        let result = eval(data);
-        setdata(result.toString());
+        let result = eval(equation);
+        setdata(result);
       } catch {
         setdata("error");
       }
     } else if (value === "C") {
       setdata("");
+      setEquation("");
     } else if (value === "⌫") {
-      setdata((prev) => prev.toString().slice(0, -1));
+      setEquation((prev) => prev.toString().slice(0, -1));
+      setdata("")
     } else {
       if (data === "error") {
-        setdata((prev) => prev);
+        setdata("error");
       } else {
-        setdata((prev) => prev + value);
+        setEquation((prev) => prev + value);
+        
       }
     }
   };
   return (
-    <>
-      <h1 style={{ textAlign: "center", marginBottom: "20px" }}>
-        React Calculator
-      </h1>
-      <div className={styles.calcContainer}>
-        <Display data={data}></Display>
-        <Container
-          array={buttonArray}
-          data={data}
-          click={buttonClick}
-        ></Container>
-      </div>
-      <p style={{ textAlign: "center", marginTop: "20px", fontSize: "14px" }}>
-        Built with React by Jayadev Bemal
-      </p>
-    </>
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 flex flex-col items-center justify-center p-4 relative overflow-hidden text-white selection:bg-indigo-500 selection:text-white">
+      {/* Decorative ambient background glows */}
+      <div className="absolute top-1/4 -left-20 w-80 h-80 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Header */}
+      <header className="mb-6 text-center z-10">
+        <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent drop-shadow-sm">
+          React Calculator
+        </h1>
+        <p className="text-xs text-slate-400 mt-1 uppercase tracking-widest font-semibold">
+          Minimal &amp; Modern
+        </p>
+      </header>
+
+      <Display result={data} equation={equation} ></Display>
+
+      {/* Calculator Container */}
+      <ButtonContainersec
+        array={buttonArray}
+        data={data}
+        click={buttonClick}
+      ></ButtonContainersec>
+
+      {/* Footer */}
+      <footer className="mt-8 text-xs text-slate-400 tracking-wide z-10 flex items-center gap-1">
+        <span>Built with React &amp; Tailwind by</span>
+        <span className="text-indigo-400 font-medium">Jayadev Bemal</span>
+      </footer>
+    </div>
   );
 }
-
-export default App;
